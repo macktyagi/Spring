@@ -51,7 +51,7 @@ public class EmployeeDaoImpl  implements EmployeeDAO {
 		try {
 			session = sessionFactory.openSession();
 			Transaction t  = session.beginTransaction();
-			key =(Integer) session.save(employee);
+			  key = (Integer)session.save(employee);
 			t.commit();
 		}
 		catch(Exception e) {

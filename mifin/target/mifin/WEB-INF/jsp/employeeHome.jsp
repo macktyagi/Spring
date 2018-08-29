@@ -25,7 +25,7 @@ function getData(actionName){
 	</head>
 	<body>
 		
-		<form:form action="getEmployeeDetails" method="post">
+		<form:form action="saveEmployeeDetails" method="post" modelAttribute="employee">
 			<div>
 				Search: <input type="text" name="search" />
 				<button name="getData" onclick="javascript:getData('getEmployeeDetails')" >Search</button>

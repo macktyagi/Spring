@@ -2,31 +2,36 @@ package com.qc.los.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="emp_data")
+
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="SEQUENCE_NAME")
+	 @SequenceGenerator(name = "SEQUENCE_NAME", sequenceName = "ID_SEQ", allocationSize = 1)
+	@Column(name="ID", updatable=false, nullable=false)
+	private int id;
 	private String name;
-	private String age;
+	private int age;
 	private String sex;
 	private String address;
-	private String mobile;
+	private int mobile;
 	private String designation;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -35,10 +40,10 @@ public class Employee implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 	public String getSex() {
@@ -53,10 +58,10 @@ public class Employee implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getMobile() {
+	public int getMobile() {
 		return mobile;
 	}
-	public void setMobile(String mobile) {
+	public void setMobile(int mobile) {
 		this.mobile = mobile;
 	}
 	public String getDesignation() {

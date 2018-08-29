@@ -24,26 +24,47 @@ function getData(actionName){
 	</script>
 	</head>
 	<body>
-		
-		<form:form action="getEmployeeDetails" method="post" modelAttribute="employee">
-			<div>
-				Search: <input type="text" name="search" />
-				<button name="getData" onclick="javascript:getData('getEmployeeDetails')" >Search</button>
-			</div>
-			
-			<div>
-				
-				<c:if test="${not empty empdata}">
 	
+		<form:form action="getEmployeeDetails" method="get" modelAttribute="employee"  >
+		
+		
+		<button  name="getData" onclick="javascript:getData('getEmployeeDetails')" >Get Data </button>
+		<div>
+				
+				<table>
+					<thead><tr>
+						<th>Id</th><th>Name</th><th>Sex</th><th>Mobile</th><th>Address</th><th>Designation</th>
+					</tr></thead>
+				<c:if test="${not empty empdata}">
+					
 					<ul>
-					<c:forEach var="empValue" items="${empdata}">
-						<li>${empValue}</li>
+					<c:forEach var="empValue" items="${empdata}">					
+						<tr>
+						<td>${empValue.id}</td>
+						<td>${empValue.name}</td>
+						<td>${empValue.sex}</td>
+						<td>${empValue.mobile}</td>
+						<td>${empValue.address}</td>
+						<td>${empValue.designation}</td>
+					</tr>	
 					</c:forEach>
 					</ul>
 		
 				</c:if>
-			
+			</table>
 			</div>
+			
+			
+		
+		</form:form>
+		
+		<form:form action="saveEmployeeDetails" method="post" modelAttribute="employee">
+			<!-- <div>
+				Search: <input type="text" name="search" />
+				<button name="getData" onclick="javascript:getData('getEmployeeDetails')" >Search</button>
+			</div> -->
+			
+			
 			
 			
 			
