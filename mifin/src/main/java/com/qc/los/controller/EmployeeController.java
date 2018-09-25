@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.qc.los.model.EmpData;
 import com.qc.los.model.Employee;
 import com.qc.los.service.EmployeeService;
 
@@ -44,6 +45,23 @@ public class EmployeeController {
 		String message = employeeService.saveEmployeeDetails(employee);
 		getEmployeeDetails(request, model);
 		
+		return viewName;
+	}
+	
+	@PostMapping("/saveEmpData")
+	public String saveEmpData(HttpServletRequest request, @ModelAttribute EmpData empData,Model model) {
+		viewName = "inheritance";
+		String message = employeeService.saveEmpData(empData);
+		getEmpData(request, model);
+		
+		return viewName;
+	}
+	@GetMapping("/getEmpData")
+	public String getEmpData(HttpServletRequest request,Model model) {	
+		viewName = "inheritance";
+		model.addAttribute("empData",new EmpData());
+		List<EmpData> empdata = employeeService.getEmpData();
+		model.addAttribute("empdata",empdata);
 		return viewName;
 	}
 

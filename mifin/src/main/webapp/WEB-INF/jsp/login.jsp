@@ -4,6 +4,10 @@
 <form action="getLoanDetail" >
 	<input type="submit" value="login" />
 </form>
+
+<form action="getInheritnace" >
+	<input type="submit" value="Inheritnace" />
+</form>
 </body>
 </html>
 
